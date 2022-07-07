@@ -11,3 +11,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 nvim --headless +PlugInstall +qa
 
+cargo install tmux-sessionizer
+fish
+fish_add_path /Users/thomas-delalande/.cargo/bin
+tms config -p ~/dev
+

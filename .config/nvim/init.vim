@@ -56,6 +56,10 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Harpoon
 Plug 'ThePrimeagen/harpoon'
+
+" File Browser
+Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
 lua require("user")
@@ -72,9 +76,9 @@ let mapleader = " "
 
 " Copied remaps i understand
 nnoremap <silent> Q <nop>
+nnoremap <silent> <C-f> :silent !tmux neww tms<CR>
 
 " copied remaps i don't understand
-nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
 nnoremap <leader>; :lua require("user.git-worktree").execute(vim.loop.cwd(), "just-build")<CR>
 nnoremap <leader>vwh :h <C-R>=expand("<cword>")<CR><CR>
 
@@ -95,7 +99,7 @@ nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:c
 nnoremap <leader>gln :cnext<CR>:call search(_search_term)<CR>
 nnoremap <leader>glp :cprev<CR>:call search(_search_term)<CR>
 nnoremap <leader>nf :!./scripts/format.py %
-
+nnoremap <leader>e :NvimTreeToggle<CR>
 nnoremap <leader>x :silent !chmod +x %<CR>
 
 vnoremap J :m '>+1<CR>gv=gv

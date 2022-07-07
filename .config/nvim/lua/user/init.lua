@@ -47,3 +47,7 @@ if pcall(require, "plenary") then
 		return require(name)
 	end
 end
+
+-- folder browser
+require("nvim-tree").setup()
+

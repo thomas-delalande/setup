@@ -10,3 +10,4 @@ function brew-install
 end
 
 funcsave brew-install
+tmux
