@@ -10,7 +10,7 @@ brew install fish
 brew install gradle
 brew install ripgrep
 brew install rust
-
+brew install rust-analyzer
 
 # neovim dependencies
 brew install neovim --HEAD

@@ -1,5 +1,5 @@
 [user]
-	name = thomas-delalande
+	name = Tom Delalande
 	email = 80664757+thomas-delalande@users.noreply.github.com
 [alias]
 	fix = git commit --amend --no-edit
