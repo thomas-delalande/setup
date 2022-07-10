@@ -15,3 +15,6 @@ function brew-cask
 end
 funcsave brew-install
 tmux
+bind \cf 'tmux neww tms'
+bind \ck 'clear'
+set -Ux EDITOR 'nvim'
