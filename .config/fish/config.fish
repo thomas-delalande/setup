@@ -17,4 +17,5 @@ funcsave brew-install
 tmux
 bind \cf 'tmux neww tms'
 bind \ck 'clear'
+bind \cb 'vim . +:CHADopen'
 set -Ux EDITOR 'nvim'

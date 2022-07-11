@@ -3,10 +3,6 @@ call plug#begin('~/.vim/plugged')
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
-" Plug 'hrsh7th/cmp-nvim-lsp'
-" Plug 'hrsh7th/cmp-path'
-" Plug 'hrsh7th/cmp-buffer'
-" Plug 'hrsh7th/nvim-cmp'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 Plug 'simrat39/symbols-outline.nvim'
@@ -104,7 +100,14 @@ let g:coq_settings = { 'auto_start': 'shut-up' }
 nnoremap <silent> <C-j> <Cmd>lspsaga diagnostic_jump_next<CR>
 nnoremap <silent>K <Cmd>lspsaga hover_doc<CR>
 inoremap <silent> <C-k> <Cmd>lspsaga signature_help<CR>
-nnoremap <silent> gh <Cmd> lspsaga lsp_finder<CR>
+" diagnositics
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+
 " format
 nnoremap <silent> ff <Cmd>lua vim.lsp.buf.format { async = true }<CR>
 " better escape
