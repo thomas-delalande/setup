@@ -19,7 +19,6 @@ Nnoremap = CreateNoremap("n", { noremap = true })
 Inoremap = CreateNoremap("i", { noremap = true })
 
 require("user.git-worktree")
-require("user.lsp")
 
 require("refactoring.config").setup({
     formatting = {
@@ -72,6 +71,7 @@ for _, server in ipairs(servers) do
     }
 end
 
+-- Lua specific config
 lspconfig.sumneko_lua.setup {
     settings = {
         Lua = {
@@ -82,6 +82,21 @@ lspconfig.sumneko_lua.setup {
     }
 }
 
+-- Note taking config
+require("zk").setup({
+    picker = "telescope",
+    lsp = {
+       config = {
+        cmd = { "zk", "lsp" },
+        name = "zk",
+        on_attach = on_attach,
+       },
+       auto_attach = {
+        enabled = true,
+        filetypes = { "markdown" },
+       },
+    },
+})
 require('lualine').setup()
 require("nvim-lsp-installer").setup {}
 require("autosave").setup()

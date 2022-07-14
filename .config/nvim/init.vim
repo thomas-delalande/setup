@@ -63,6 +63,9 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
 Plug 'kyazdani42/nvim-tree.lua'
+
+" Note Taking
+Plug 'mickael-menu/zk-nvim'
 call plug#end()
 
 " set leader to SPACE

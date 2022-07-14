@@ -24,3 +24,4 @@ brew install autoconf
 brew install rustup
 rustup-init
 brew install lua-language-server
+brew install zk
