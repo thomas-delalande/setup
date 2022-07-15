@@ -10,3 +10,4 @@ brew install --cask obsidian
 brew install --cask rectangle
 
 brew install --cask reaper
+brew install --cask intellij-idea-ce
