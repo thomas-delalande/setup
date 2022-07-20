@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim
+SETUVAR --export IMAGE_TAG:latest
 SETUVAR --export RUST_BACKTRACE:1
 SETUVAR --export ZK_NOTEBOOK_DIR:/Users/thomas\x2ddelalande/notes
 SETUVAR __fish_initialized:3400

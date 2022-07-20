@@ -45,11 +45,13 @@ local on_attach = function(client, bufnr)
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gs', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gk', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gK', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wl', function()
@@ -58,12 +60,18 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
     vim.keymap.set('n', '<space>k', vim.diagnostic.open_float, bufopts)
 end
 
-local servers = { "svelte", "kotlin_language_server", "rust_analyzer", "sumneko_lua" }
+local servers = {
+    "svelte",
+    "kotlin_language_server",
+    "rust_analyzer",
+    "sumneko_lua",
+    "tsserver",
+    "marksman"
+}
 local lspconfig = require('lspconfig')
 for _, server in ipairs(servers) do
     lspconfig[server].setup {
@@ -86,15 +94,15 @@ lspconfig.sumneko_lua.setup {
 require("zk").setup({
     picker = "telescope",
     lsp = {
-       config = {
-        cmd = { "zk", "lsp" },
-        name = "zk",
-        on_attach = on_attach,
-       },
-       auto_attach = {
-        enabled = true,
-        filetypes = { "markdown" },
-       },
+        config = {
+            cmd = { "zk", "lsp" },
+            name = "zk",
+            on_attach = on_attach,
+        },
+        auto_attach = {
+            enabled = true,
+            filetypes = { "markdown" },
+        },
     },
 })
 require('lualine').setup()
@@ -102,8 +110,6 @@ require("nvim-lsp-installer").setup {}
 require("autosave").setup()
 
 -- theme
-vim.g.material_style = "palenight"
-require('material').setup()
 -- folder browser
 require("nvim-tree").setup()
 

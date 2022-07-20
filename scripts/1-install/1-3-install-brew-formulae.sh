@@ -27,3 +27,4 @@ brew install lua-language-server
 brew install zk
 brew install koekeishiya/formulae/yabai --HEAD
 brew install koekeishiya/formulae/skhd
+

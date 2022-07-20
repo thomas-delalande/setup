@@ -1,4 +1,4 @@
-" Plugins
+$" Plugins
 call plug#begin('~/.vim/plugged')
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -30,6 +30,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ThePrimeagen/git-worktree.nvim'
+Plug 'kdheepak/lazygit.nvim'
 
 " Quality of Life
 Plug 'mbbill/undotree'
@@ -48,7 +49,7 @@ Plug 'tpope/vim-commentary'
 Plug 'sbdchd/neoformat'
 
 " Visual
-Plug 'marko-cerovac/material.nvim'
+Plug 'navarasu/onedark.nvim'
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
@@ -89,7 +90,8 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
-colorscheme material
+let g:onedark_config = { 'style': 'dark' }
+colorscheme onedark
 set relativenumber
 set number
 set tabstop=4
@@ -97,6 +99,16 @@ set shiftwidth=4
 set expandtab
 set undodir=$HOME"/.undodir"
 set completeopt=menu,menuone,noinsert,noselect
+set listchars=trail:•,tab:>-,nbsp:␣
+set list
+set colorcolumn=80
+
+" telescope
+nnoremap <leader>fe <cmd> lua require('telescope.builtin').oldfiles()<cr>
+
+" lazygit
+nnoremap <silent> <leader>gg :LazyGit<CR>
+
 
 " lsp 
 let g:coq_settings = { 'auto_start': 'shut-up' }

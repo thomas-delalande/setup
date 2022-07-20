@@ -18,4 +18,5 @@ tmux
 bind \cf 'tmux neww tms'
 bind \ck 'clear'
 bind \cb 'vim . +:CHADopen'
+bind \cg 'lazygit'
 set -Ux EDITOR 'nvim'
