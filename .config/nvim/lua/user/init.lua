@@ -45,23 +45,22 @@ local on_attach = function(client, bufnr)
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set('n', 'gr', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gs', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'gk', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'gK', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wl', function()
+    vim.keymap.set('n', '<leader>b', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', '<Leader>mb', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', '<Leader>n', '<cmd>Telescope lsp_references<CR>', bufopts)
+    vim.keymap.set('n', '<Leader>mn', '<cmd>Telescope lsp_implementations<CR>', bufopts)
+    vim.keymap.set('n', '<Leader>mR', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<Leader>mk', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', '<Leader>mm', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set('n', '<Leader>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
-    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-    vim.keymap.set('n', '<space>k', vim.diagnostic.open_float, bufopts)
+    vim.keymap.set('n', '<Leader>t', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<Leader><CR>', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<Leader>l', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<Leader>K','<cmd>Telescope diagnostics<CR>', bufopts)
 end
 
 local servers = {
@@ -70,7 +69,8 @@ local servers = {
     "rust_analyzer",
     "sumneko_lua",
     "tsserver",
-    "marksman"
+    "marksman",
+    "yamlls",
 }
 local lspconfig = require('lspconfig')
 for _, server in ipairs(servers) do
@@ -90,28 +90,9 @@ lspconfig.sumneko_lua.setup {
     }
 }
 
--- Note taking config
-require("zk").setup({
-    picker = "telescope",
-    lsp = {
-        config = {
-            cmd = { "zk", "lsp" },
-            name = "zk",
-            on_attach = on_attach,
-        },
-        auto_attach = {
-            enabled = true,
-            filetypes = { "markdown" },
-        },
-    },
-})
 require('lualine').setup()
 require("nvim-lsp-installer").setup {}
 require("autosave").setup()
-
--- theme
--- folder browser
-require("nvim-tree").setup()
 
 -- lsp
 require("trouble").setup {}

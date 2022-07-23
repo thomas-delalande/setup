@@ -5,18 +5,20 @@ if status is-interactive
 end
 
 function brew-install
-	echo "brew install" $argv >> $HOME/setup/scripts/1-install/1-3-install-brew-formulae.sh
-	brew install $argv
+    echo "brew install" $argv >> $HOME/setup/scripts/1-install/1-3-install-brew-formulae.sh
+    brew install $argv
 end
 
 function brew-cask
-	echo "brew install --cask" $argv >> $HOME/setup/scripts/1-install/1-4-install-brew-casks.sh
-	brew install --cask $argv
+    echo "brew install --cask" $argv >> $HOME/setup/scripts/1-install/1-4-install-brew-casks.sh
+    brew install --cask $argv
 end
+
 funcsave brew-install
 tmux
+
 bind \cf 'tmux neww tms'
 bind \ck 'clear'
-bind \cb 'vim . +:CHADopen'
+bind \cq 'vim . +:CHADopen'
 bind \cg 'lazygit'
 set -Ux EDITOR 'nvim'

@@ -1,11 +1,24 @@
-$" Plugins
+" set leader to SPACE
+let mapleader = " "
+
+" Plugins
 call plug#begin('~/.vim/plugged')
 " LSP
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/lsp-status.nvim'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 Plug 'simrat39/symbols-outline.nvim'
+
+
+" Completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'sbdchd/neoformat'
 " Using ff instead since autosave was messing up undo function -> Plug 'lukas-reineke/lsp-format.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
@@ -13,6 +26,13 @@ Plug 'folke/trouble.nvim'
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'romgrk/nvim-treesitter-context'
+
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
 
 " Debugger
 Plug 'mfussenegger/nvim-dap'
@@ -25,7 +45,6 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 
 " Git
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
@@ -46,16 +65,9 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'tpope/vim-commentary'
 
 " Prettier
-Plug 'sbdchd/neoformat'
 
-" Visual
+" Theme
 Plug 'navarasu/onedark.nvim'
-
-" Telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Harpoon
 Plug 'ThePrimeagen/harpoon'
@@ -63,14 +75,12 @@ Plug 'ThePrimeagen/harpoon'
 " File Browser
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
-Plug 'kyazdani42/nvim-tree.lua'
 
-" Note Taking
-Plug 'mickael-menu/zk-nvim'
+" Random
+Plug 'NTBBloodbath/rest.nvim'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
-" set leader to SPACE
-let mapleader = " "
 
 " import main lua file
 lua require("user")
@@ -104,10 +114,12 @@ set list
 set colorcolumn=80
 
 " telescope
-nnoremap <leader>fe <cmd> lua require('telescope.builtin').oldfiles()<cr>
+nnoremap <leader>f <cmd>Telescope find_files<CR>
+nnoremap <leader>F <cmd>Telescope live_grep<CR>
+nnoremap <leader>e <cmd>Telescope oldfiles<cr>
 
 " lazygit
-nnoremap <silent> <leader>gg :LazyGit<CR>
+nnoremap <silent> <C-g> :LazyGit<CR>
 
 
 " lsp 
@@ -126,12 +138,11 @@ nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 " format
 nnoremap <silent> ff <Cmd>lua vim.lsp.buf.format { async = true }<CR>
 " better escape
-inoremap jh <Esc>
+inoremap jk <Esc>
 " sessionizer remap 
 nnoremap <silent> <C-f> :silent !tmux neww tms<CR>
 " open file browser
-nnoremap <leader>v <cmd>CHADopen<cr>
-nnoremap <leader>e :NvimTreeToggle<CR> 
+nnoremap <leader>1 <cmd>CHADopen<cr>
 " open undo tree
 nnoremap <leader>u :UndotreeShow<CR>
 " control c to escape (only sometimes for some reason
