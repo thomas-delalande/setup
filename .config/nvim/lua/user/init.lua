@@ -29,7 +29,7 @@ require("refactoring.config").setup({
 
 -- lsp
 local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<space>k', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
@@ -59,7 +59,7 @@ local on_attach = function(client, bufnr)
     end, bufopts)
     vim.keymap.set('n', '<Leader>t', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<Leader><CR>', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', '<Leader>l', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<Leader>l', vim.lsp.buf.format, bufopts)
     vim.keymap.set('n', '<Leader>K','<cmd>Telescope diagnostics<CR>', bufopts)
 end
 

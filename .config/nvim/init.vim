@@ -112,6 +112,29 @@ set completeopt=menu,menuone,noinsert,noselect
 set listchars=trail:•,tab:>-,nbsp:␣
 set list
 set colorcolumn=80
+set termguicolors
+set nocompatible
+set nohlsearch
+set ruler
+set number
+set nowrap
+set showcmd
+set incsearch
+set noswapfile
+set autoread
+set ignorecase
+set smartcase
+set noerrorbells
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set expandtab
+set cursorline
+set backupcopy=yes
+set signcolumn=yes
+set scrolloff=8
+set hidden
+set splitright
 
 " telescope
 nnoremap <leader>f <cmd>Telescope find_files<CR>

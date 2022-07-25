@@ -1,6 +1,5 @@
 window:
   decorations: 'None'
-# Font configuration (changes require restart)
 font:
   family: RobotoMono Nerd Font
   style: Regular
